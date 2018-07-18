@@ -39,6 +39,16 @@ beforeEach(async () => {
   );
 });
 
+describe('blockfunding', () => {
+  it('intializes test data', () => {
+    //check if any of these test instances are undefince
+    assert.ok(accounts);
+    assert.ok(factory);
+    assert.ok(campaignAddress);
+    assert.ok(campaign);
+  });
+});
+
 //tests for Campaign Factory contract
 describe('Campaign Factory', () => {
   it('deploys factory', () => {
@@ -61,4 +71,38 @@ describe('Campaign', () => {
     //check if equal to the account we deployed from
     assert.equal(accounts[0], manager);
   });
+
+  it('allows people to contribute money, then marks them as an approver', async () => {
+    //attempt to contribute valid amount of ETH to campaign
+    await campaign.methods.contribute().send({
+      value: '1000',
+      from: accounts[1],
+      gas: '1000000'
+    });
+
+    //since we contributed from account 1, check if account 1 is in approvers
+    const isApproved = campaign.methods.approvers(accounts[1]).call();
+
+    //if it's true, user was added into approvers
+    assert.ok(isApproved);
+  });
+
+  it('enforces minimum contribution amount', async () => {
+    //attempt to contribute invalid amount of ETH to campaign
+    try {
+      await campaign.methods.contribute().send({
+        value: '10',
+        from: accounts[2],
+        gas: '1000000'
+      });
+      assert(false);
+
+    } catch (err) {
+
+      //error is good, it means it blocked this user from contributing less than min
+      assert(err);
+    }
+  });
+
+  
 });
