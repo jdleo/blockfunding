@@ -20,7 +20,7 @@ beforeEach(async () => {
 
   //deploy campaign factory contract to manage test campaigns
   factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
-    .deploy({data: compiledFactory.bytecode})
+    .deploy({data: '0x' + compiledFactory.bytecode})
     .send({from: accounts[0], gas: '1000000'});
 
   //use campaign factory to deploy new campaign contract
@@ -37,4 +37,28 @@ beforeEach(async () => {
     JSON.parse(compiledCampaign.interface),
     campaignAddress
   );
+});
+
+//tests for Campaign Factory contract
+describe('Campaign Factory', () => {
+  it('deploys factory', () => {
+    //if contract address exists, most likely contract exists
+    assert.ok(factory.options.address);
+  });
+
+  it('deploys campaign', () => {
+    //if contract address exists, most likely contract exists
+    assert.ok(campaign.options.address);
+  });
+})
+
+//tests for Campaign contract
+describe('Campaign', () => {
+  it('assigns campaign creator to campaign manager', async () => {
+    //get manager data field from campaign contract
+    const manager = await campaign.methods.manager().call();
+
+    //check if equal to the account we deployed from
+    assert.equal(accounts[0], manager);
+  });
 });
