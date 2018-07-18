@@ -4,7 +4,7 @@
   "description": "Decentralized crowdfunding, managed by solidity contracts, deployed to blockchain.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "John Leonardo",
   "license": "ISC",
