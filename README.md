@@ -5,5 +5,7 @@ Blockfunding is a yet, another decentralized crowdfunding platform. It's build e
 
 ## tests  
 ```
+npm run compile
 npm run test
-```
+```  
+**Note:** you need to compile contracts before testing, that's what the first line is for
