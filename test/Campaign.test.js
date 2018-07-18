@@ -31,4 +31,10 @@ beforeEach(async () => {
 
   //take first deployed campaign and assign it to campaignAddress test variable
   [campaignAddress] = await factory.methods.getDeployedCampaigns().call();
+
+  //reference already-deployed campaign contract
+  campaign = await new web3.eth.Contract(
+    JSON.parse(compiledCampaign.interface),
+    campaignAddress
+  );
 });
