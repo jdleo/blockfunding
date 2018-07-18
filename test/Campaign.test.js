@@ -104,5 +104,62 @@ describe('Campaign', () => {
     }
   });
 
-  
+  it('allows manager to make payment request', async () => {
+    //attempt to make request from account 0 (manager)
+    await campaign.methods
+      .createRequest('test description', '1000', accounts[1])
+      .send({
+        from: accounts[0],
+        gas: '1000000'
+    });
+
+    //get request at index 0
+    const req = await campaign.methods.requests(0).call();
+
+    //check to see if the request properties are as expected
+    assert.equal('test description', req.description);
+    assert.equal('1000', req.value);
+    assert.equal(accounts[1], req.recipient);
+  });
+
+  it('processes requests from creation to finalization', async () => {
+    //attempt to contribute 10 ETH
+    await campaign.methods.contribute().send({
+      from: accounts[0],
+      value: web3.utils.toWei('10', 'ether')
+    });
+
+    //create request from manager for 5 ETH to be transferred to account 1
+    await campaign.methods
+      .createRequest('TEST', web3.utils.toWei('5', 'ether'), accounts[1])
+      .send({
+        from: accounts[0],
+        gas: '1000000'
+      });
+
+      //approve request from account 0 (our only contributor)
+      await campaign.methods.approveRequest(0).send({
+        from: accounts[0],
+        gas: '1000000'
+      });
+
+      //get balance of account 1 before finalizing
+      let balanceBefore = await web3.eth.getBalance(accounts[1]);
+      balanceBefore = web3.utils.fromWei(balanceBefore, 'ether');
+      balanceBefore = parseFloat(balanceBefore);
+
+      //attempt to finalize request
+      await campaign.methods.finalizeRequest(0).send({
+        from: accounts[0],
+        gas: '1000000'
+      });
+
+      //get balance of recipient account from request (account 1)
+      let balance = await web3.eth.getBalance(accounts[1]);
+      balance = web3.utils.fromWei(balance, 'ether');
+      balance = parseFloat(balance);
+
+      //if current balance is ~5 ETH greater than it was before, pass
+      assert((balance - balanceBefore) > 4.9);
+  });
 });
