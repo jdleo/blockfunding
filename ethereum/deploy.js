@@ -6,8 +6,8 @@ const compiledFactory = require('./build/CampaignFactory.json');
 //CHANGE 'WALLET SEED' TO YOUR ETHEREUM WALLET NMEMONIC (DO NOT SHARE)
 //CHANGE INFURA API KEY TO YOUR INFURA API KEY LINK (TESTNET OR MAINNET)'
 const provider = new HDWalletProvider(
-  'WALLET SEED',
-  'https://rinkeby.infura.io/XXXXXXXXXXXXXXXXX'
+  'faculty drink cradle october host captain reflect buyer toast album desert program',
+  'https://rinkeby.infura.io/UawBd2Uf27LzaCleE8j0'
 );
 
 const web3 = new Web3(provider);

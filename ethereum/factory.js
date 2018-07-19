@@ -1,5 +1,5 @@
 import web3 from './web3';
-import CampaignFactory from './build/CampaignFactory.json');
+import CampaignFactory from './build/CampaignFactory.json';
 
 //CONFIG:
 //CHANGE THE ETHEREUM ADDRESS IN THE CALL BELOW
@@ -8,7 +8,7 @@ import CampaignFactory from './build/CampaignFactory.json');
 const instance = new web3.eth.Contract(
   JSON.parse(CampaignFactory.interface),
   //CHANGE THIS BELOW
-  '0x1CedeFdAA605969007543A3C7793F6DdC16a0712'
+  '0xD2fbB5dAAc116DA1C0e042FC642C0214C7C023e4'
 );
 
 export default instance;

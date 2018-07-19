@@ -13,6 +13,7 @@ paste both your Infura API key (don't have one, get one) and your 12-word mnemon
 
 ## deploy (do this before starting dev/prod server obviously)  
 ```
+npm run compile
 npm run deploy
 ```  
 it should show "contract deployed to:" and then an address. copy that address.
