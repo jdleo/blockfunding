@@ -10,8 +10,8 @@ npm install
 
 ## setup/config  
 paste both your Infura API key (don't have one, get one) and your 12-word mnemonic in `ethereum/deploy.js` (you'll see where)  
-  
-## deploy (do this starting dev/prod server obviously)  
+
+## deploy (do this before starting dev/prod server obviously)  
 ```
 npm run deploy
 ```  
