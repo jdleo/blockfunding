@@ -14,6 +14,10 @@ var _Header2 = _interopRequireDefault(_Header);
 
 var _semanticUiReact = require('semantic-ui-react');
 
+var _head = require('next/dist/lib/head.js');
+
+var _head2 = _interopRequireDefault(_head);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/Users/j/blockfunding/components/Layout.js';
@@ -22,13 +26,24 @@ exports.default = function (props) {
   return _react2.default.createElement(_semanticUiReact.Container, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 8
     }
-  }, _react2.default.createElement(_Header2.default, {
+  }, _react2.default.createElement(_head2.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 9
+    }
+  }, _react2.default.createElement('link', {
+    rel: 'stylesheet',
+    href: '//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css', __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    }
+  })), _react2.default.createElement(_Header2.default, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
     }
   }), props.children);
 };
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvTGF5b3V0LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiSGVhZGVyIiwiQ29udGFpbmVyIiwicHJvcHMiLCJjaGlsZHJlbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsQUFBTzs7OztBQUNQLEFBQU8sQUFBWTs7OztBQUNuQixBQUFRLEFBRVI7Ozs7OztrQkFBZSxpQkFBUyxBQUN0Qjt5QkFDRSxBQUFDOztnQkFBRDtrQkFBQSxBQUNFO0FBREY7QUFBQSxHQUFBLGtCQUNFLEFBQUM7O2dCQUFEO2tCQURGLEFBQ0UsQUFDQztBQUREO0FBQUEsWUFGSixBQUNFLEFBRVMsQUFHWjtBQVBEIiwiZmlsZSI6IkxheW91dC5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvai9ibG9ja2Z1bmRpbmcifQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvTGF5b3V0LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiSGVhZGVyIiwiQ29udGFpbmVyIiwiSGVhZCIsInByb3BzIiwiY2hpbGRyZW4iXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBLEFBQU87Ozs7QUFDUCxBQUFPLEFBQVk7Ozs7QUFDbkIsQUFBUTs7QUFDUixBQUFPLEFBRVA7Ozs7Ozs7O2tCQUFlLGlCQUFTLEFBQ3RCO3lCQUNFLEFBQUM7O2dCQUFEO2tCQUFBLEFBQ0U7QUFERjtBQUFBLEdBQUEsa0JBQ0UsQUFBQzs7Z0JBQUQ7a0JBQUEsQUFDRTtBQURGO0FBQUE7U0FDRSxBQUNNLEFBQ0o7VUFGRixBQUVPO2dCQUZQO2tCQUZKLEFBQ0UsQUFDRSxBQUtGO0FBTEU7QUFDRSx1QkFJSixBQUFDOztnQkFBRDtrQkFQRixBQU9FLEFBQ0M7QUFERDtBQUFBLFlBUkosQUFDRSxBQVFTLEFBR1o7QUFiRCIsImZpbGUiOiJMYXlvdXQuanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2ovYmxvY2tmdW5kaW5nIn0=
