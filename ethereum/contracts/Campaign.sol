@@ -4,7 +4,7 @@ contract CampaignFactory {
     constructor () public {
 
     }
-    
+
     function createCampaign(uint minimum) public {
       address newCampaign = new Campaign(minimum, msg.sender);
       deployedCampaigns.push(newCampaign);
@@ -80,5 +80,19 @@ contract Campaign {
 
         req.complete = true;
         req.recipient.transfer(req.value);
+    }
+
+    function getSummary() public view returns (uint, uint, uint, uint, address) {
+      return (
+        minimumAmount,
+        this.balance,
+        requests.length,
+        approversCount,
+        manager
+      );
+    }
+
+    function getRequestsCount() public view returns (uint) {
+      return requests.length;
     }
 }
