@@ -4,15 +4,21 @@ import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
+const fetch = require("node-fetch");
 
 class CampaignShow extends Component {
 
   static async getInitialProps(props) {
     const campaign = Campaign(props.query.address);
-
+    const url = "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD";
     const summary = await campaign.methods.getSummary().call();
 
+    const response = await fetch(url);
+    const json = await response.json();
+
     return {
+      ethPrice: json.USD,
+      address: props.query.address,
       minimumContribution: summary[0],
       balance: summary[1],
       requestsCount: summary[2],
@@ -71,7 +77,7 @@ class CampaignShow extends Component {
           {this.renderCards()}
         </Grid.Column>
         <Grid.Column width={6}>
-          <ContributeForm address={this.props.address}/>
+          <ContributeForm address={this.props.address} ethPrice={this.props.ethPrice}/>
         </Grid.Column>
       </Grid>
       </Layout>

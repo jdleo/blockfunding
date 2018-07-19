@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, Input, Message, Button} from 'semantic-ui-react';
+import {Form, Input, Message, Button, Icon, Label} from 'semantic-ui-react';
 import Campaign from '../ethereum/campaign';
 import web3 from '../ethereum/web3';
 import {Router} from '../routes';
@@ -48,7 +48,7 @@ class ContributeForm extends Component {
             labelPosition="right"
           />
         </Form.Field>
-        <Message error header="Oops!" content={this.state.errorMessage}</Message>
+        <Message error header="Oops!" content={this.state.errorMessage}/>
         <Button
           loading={this.state.loading}
           floated="right"
@@ -56,6 +56,14 @@ class ContributeForm extends Component {
           icon="right arrow"
           labelPosition='right'
         />
+        <Button as='div' labelPosition='right'>
+          <Button icon>
+            <Icon name='dollar sign' />
+          </Button>
+          <Label as='a' basic pointing='left'>
+            {(this.props.ethPrice * parseFloat(this.state.value)).toFixed(2)}
+          </Label>
+        </Button>
       </Form>
     );
   }
