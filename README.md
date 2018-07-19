@@ -3,9 +3,28 @@
 # blockfunding  
 Blockfunding is a yet, another decentralized crowdfunding platform. It's build entirely on the blockchain. Its' main backbone is two ethereum (solidity) contracts that manage the entire backend. The front-end is React, and setup is a one-click-deploy.  
 
+## install depencencies  
+```
+npm install
+```  
+
+## setup/config  
+paste both your Infura API key (don't have one, get one) and your 12-word mnemonic in `ethereum/deploy.js` (you'll see where)  
+  
+## deploy (do this starting dev/prod server obviously)  
+```
+npm run deploy
+```  
+it should show "contract deployed to:" and then an address. copy that address.
+take that address, and paste it in `ethereum/factory.js` (you'll see where)
+
+## dev  
+```
+npm run dev
+```  
+
 ## tests  
 ```
-npm run compile
 npm run test
 ```  
-**Note:** you need to compile contracts before testing, that's what the first line is for
+**Note:** you need to compile contracts before testing, but you should have at this point
