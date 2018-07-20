@@ -44,7 +44,7 @@ class CampaignShow extends Component {
         style: {overflowWrap: 'break-word'}
       },
       {
-        header: `${web3.utils.fromWei(minimumContribution, 'ether')} ETH`,
+        header: `${web3.utils.fromWei(minimumContribution, 'ether')} ETH  /  ${(parseFloat(web3.utils.fromWei(minimumContribution, 'ether')) * this.props.ethPrice).toFixed(2)} USD`,
         meta: 'Minumum Contribution',
         description: 'Minimum contribution to become an approver'
       },
@@ -59,7 +59,7 @@ class CampaignShow extends Component {
         description: 'Amount of payment requests made by manager'
       },
       {
-        header: `${web3.utils.fromWei(balance, 'ether')} ETH`,
+        header: `${web3.utils.fromWei(balance, 'ether')} ETH  /  ${(parseFloat(web3.utils.fromWei(balance, 'ether')) * this.props.ethPrice).toFixed(2)} USD`,
         meta: 'Campaign Balance',
         description: 'Total amount of ETH available for spending'
       }
